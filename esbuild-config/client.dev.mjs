@@ -12,6 +12,9 @@ try {
     sourcemap: true,
     outfile: 'public/static/bundle.js',
     plugins: [sassPlugin({ type: 'style', quietDeps: true, logger: sass.Logger.silent })],
+    define: {
+      'process.env.NODE_ENV': process.env.NODE_ENV ? process.env.NODE_ENV : "'development'",
+    },
   });
 
   await ctx.watch();

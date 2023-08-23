@@ -4,7 +4,9 @@ import App from './App';
 
 import './styles/app.scss';
 
-new EventSource('/esbuild').addEventListener('change', () => location.reload());
+if (process.env.NODE_ENV === 'development') {
+  new EventSource('/esbuild').addEventListener('change', () => location.reload());
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(<App />);
