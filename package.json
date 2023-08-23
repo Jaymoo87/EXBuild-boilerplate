@@ -1,0 +1,25 @@
+{
+  "name": "esbuild-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node esbuild-config/client.dev.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.5.3",
+    "bootstrap": "^5.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "esbuild": "^0.19.2",
+    "esbuild-sass-plugin": "^2.12.0",
+    "typescript": "^5.1.6"
+  }
+}
