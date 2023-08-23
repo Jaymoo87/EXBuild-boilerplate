@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface AppProps {}
 
 const App = (props: AppProps) => {
-  const [data, setData] = useState('World');
+  const [data, setData] = useState('');
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/hello')
+      .then((res) => res.json())
+      .then((obj) => setData(obj.message));
+  });
 
   return (
     <div className="mt-5">

@@ -1097,7 +1097,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect(create, deps) {
+          function useEffect2(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1879,7 +1879,7 @@
           exports.useContext = useContext;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect;
+          exports.useEffect = useEffect2;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
@@ -23515,7 +23515,10 @@
   // src/client/App.tsx
   var import_react = __toESM(require_react());
   var App = (props) => {
-    const [data, setData] = (0, import_react.useState)("World");
+    const [data, setData] = (0, import_react.useState)("");
+    (0, import_react.useEffect)(() => {
+      fetch("http://localhost:3000/api/hello").then((res) => res.json()).then((obj) => setData(obj.message));
+    });
     return /* @__PURE__ */ import_react.default.createElement("div", { className: "mt-5" }, /* @__PURE__ */ import_react.default.createElement("h1", { className: "text-center text-info" }, "Hello ", data));
   };
   var App_default = App;

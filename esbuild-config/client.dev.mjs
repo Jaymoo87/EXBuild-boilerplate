@@ -1,4 +1,5 @@
 import * as esbuild from 'esbuild';
+import * as sass from 'sass';
 import { sassPlugin } from 'esbuild-sass-plugin';
 
 let ctx;
@@ -10,13 +11,13 @@ try {
     minify: false,
     sourcemap: true,
     outfile: 'public/static/bundle.js',
-    plugins: [sassPlugin({ type: 'style' })],
+    plugins: [sassPlugin({ type: 'style', quietDeps: true, logger: sass.Logger.silent })],
   });
 
   await ctx.watch();
   console.log('Watching client....');
 
-  const {} = await ctx.serve({
+  const { host, port } = await ctx.serve({
     servedir: 'public',
     fallback: 'index.html',
   });
