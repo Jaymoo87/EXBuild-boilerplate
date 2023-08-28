@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { fetchData } from './services/fetchService';
 
 interface AppProps {}
 
@@ -6,10 +7,10 @@ const App = (props: AppProps) => {
   const [data, setData] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/hello')
-      .then((res) => res.json())
-      .then((obj) => setData(obj.message));
-  });
+    fetchData('/api/hello')
+      .then((data) => setData(data.message))
+      .catch(() => console.log('Error: true'));
+  }, []);
 
   return (
     <div className="mt-5">
