@@ -1,6 +1,5 @@
 import * as esbuild from 'esbuild';
-import * as sass from 'sass';
-import { sassPlugin } from 'esbuild-sass-plugin';
+import postcss from 'esbuild-postcss';
 
 let ctx;
 
@@ -11,7 +10,7 @@ try {
     minify: false,
     sourcemap: true,
     outfile: 'public/static/bundle.js',
-    plugins: [sassPlugin({ type: 'style', quietDeps: true, logger: sass.Logger.silent })],
+    plugins: [postcss()],
     define: {
       'process.env.NODE_ENV': process.env.NODE_ENV ? process.env.NODE_ENV : "'development'",
     },
@@ -22,7 +21,7 @@ try {
 
   const { host, port } = await ctx.serve({
     servedir: 'public',
-    fallback: 'index.html',
+    fallback: 'public/index.html',
   });
 
   console.log(`Hot refresh at http://${host}:${port}`);

@@ -13,8 +13,8 @@ const App = (props: AppProps) => {
   }, []);
 
   return (
-    <div className="mt-5">
-      <h1 className="text-center text-info">Hello {data}</h1>
+    <div className="container">
+      <h1 className="text-red-700 bg-blue-800">Hello {data}</h1>
     </div>
   );
 };
